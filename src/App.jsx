@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [movie, setMovie] = useState('')
+    const [movies, setMovies] = useState([])
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Bababooey</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div style={{ padding: '3em', fontFamily: 'Courier New' }}>
+            <h1>Movie Watchlist</h1>
+
+            <br></br>
+            <br></br>
+
+            <img src="/images/premiere.jpeg" alt="the classic Premiere Theater"/>
+
+                <br></br>
+            <br></br>
+
+            <input
+                type="text"
+                placeholder="Enter Movie Name"
+                value={movie}
+                onChange={(e) => setMovie(e.target.value)}
+            />
+            <button
+                onClick={() => {
+                    if (!movie.trim()) return
+                    setMovies(prev => [...prev, { name: movie, rating: 0 }])
+                    setMovie('')
+                }}>
+                Add
+            </button>
+
+            <ul>
+                {movies.map((m, i) => (
+                    <li key={i} style={{ margin: '2em 0' }}>
+                        {m.name} &nbsp;
+                        {[1, 2, 3, 4, 5].map(star => (
+                            <span
+                                key={star}
+                                style={{ cursor: 'pointer', color: star <= m.rating ? 'gold' : 'lightgray' }}
+                                onClick={() =>
+                                    setMovies(prev =>
+                                        prev.map((mv, idx) =>
+                                            idx === i ? { ...mv, rating: star } : mv
+                                        )
+                                    )
+                                }>★</span>
+                        ))}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    )
 }
 
 export default App
