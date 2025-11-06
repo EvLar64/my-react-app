@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "deploy": "gh-pages -d dist",
+    "homepage": "https://evlar64.github.io/my-react-app/",
     "preview": "vite preview"
   },
   "dependencies": {
