@@ -5,7 +5,8 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    --bg-color: white;
+    --text-color: black;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -65,4 +66,15 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.dark-mode {
+    --bg-color: black;
+    --text-color: white;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
 }

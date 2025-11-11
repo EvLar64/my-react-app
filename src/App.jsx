@@ -1,18 +1,29 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import premiereImg from './images/premiere.jpeg';
 
 function App() {
     const [movie, setMovie] = useState('')
     const [movies, setMovies] = useState([])
+    const [darkMode, setDarkMode] = useState(false);
+
+    useEffect(() => {
+        document.body.classList.toggle('dark-mode', darkMode);
+    }, [darkMode]);
 
     return (
-        <div style={{ padding: '3em', fontFamily: 'Courier New' }}>
+        <div style={{ padding: '3em', fontFamily: 'Courier New'}}>
+
+            <button onClick={() => setDarkMode(prev => !prev)}>
+                {darkMode ? 'Light Mode' : 'Dark Mode'}
+            </button>
+
             <h1>Movie Watchlist</h1>
 
             <br></br>
             <br></br>
 
-            <img src="/images/premiere.jpeg" alt="the classic Premiere Theater"/>
+            <img src={premiereImg} alt="the classic Premiere Theater"/>
 
                 <br></br>
             <br></br>
@@ -48,11 +59,22 @@ function App() {
                                     )
                                 }>★</span>
                         ))}
+                        <button
+                            onClick={() =>
+                                window.open(
+                                    `https://www.youtube.com/results?search_query=${encodeURIComponent(
+                                        m.name + ' Trailer'
+                                    )}`,
+                                    '_blank'
+                                )
+                            }
+                        >
+                            Trailer Link
+                        </button>
                     </li>
                 ))}
             </ul>
         </div>
     )
 }
-
 export default App
