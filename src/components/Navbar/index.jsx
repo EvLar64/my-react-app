@@ -9,16 +9,16 @@ const Navbar = () => {
             <Nav>
                 <NavMenu>
                     <NavLink to="/about" activeStyle>
-                        About
+                        Page 2
                     </NavLink>
                     <NavLink to="/contact" activeStyle>
-                        Contact Us
+                        Page 3
                     </NavLink>
                     <NavLink to="/blogs" activeStyle>
-                        Blogs
+                        Howard
                     </NavLink>
                     <NavLink to="/sign-up" activeStyle>
-                        Sign Up
+                        Gary
                     </NavLink>
                 </NavMenu>
             </Nav>

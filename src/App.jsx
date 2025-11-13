@@ -41,9 +41,9 @@ function App() {
             </Routes>
         </Router>
 
-        <div style={{ padding: '3em', fontFamily: 'Courier New'}}>
+        <div style={{padding: '3em', fontFamily: 'Courier New'}}>
 
-            <button onClick={() => setDarkMode(prev => !prev)}>
+            <button style={{boxShadow: "4px 4px 4px rgba(0,0,0,0.3)"}} onClick={() => setDarkMode(prev => !prev)}>
                 {darkMode ? 'Light Mode' : 'Dark Mode'}
             </button>
 
@@ -52,18 +52,18 @@ function App() {
             <br></br>
             <br></br>
 
-            <img src={premiereImg} alt="the classic Premiere Theater"/>
+            <img src={premiereImg} alt="the classic Premiere Theater" style={{boxShadow: "4px 4px 4px rgba(0,0,0,0.3)"}}/>
 
                 <br></br>
             <br></br>
 
-            <input
+            <input style={{boxShadow: "4px 4px 4px rgba(0,0,0,0.3)"}}
                 type="text"
                 placeholder="Enter Movie Name"
                 value={movie}
                 onChange={(e) => setMovie(e.target.value)}
             />
-            <button
+            <button style={{boxShadow: "4px 4px 4px rgba(0,0,0,0.3)"}}
                 onClick={() => {
                     if (!movie.trim()) return
                     setMovies(prev => [...prev, { name: movie, rating: 0 }])
