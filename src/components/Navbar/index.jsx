@@ -8,17 +8,14 @@ const Navbar = () => {
         <>
             <Nav>
                 <NavMenu>
+                    <NavLink to="/index" activeStyle>
+                        Watchlist
+                    </NavLink>
                     <NavLink to="/about" activeStyle>
-                        Page 2
+                        Top-Rated
                     </NavLink>
                     <NavLink to="/contact" activeStyle>
-                        Page 3
-                    </NavLink>
-                    <NavLink to="/blogs" activeStyle>
-                        Howard
-                    </NavLink>
-                    <NavLink to="/sign-up" activeStyle>
-                        Gary
+                        Box Office
                     </NavLink>
                 </NavMenu>
             </Nav>

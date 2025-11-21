@@ -1,21 +1,17 @@
 import './App.css'
 import { useState, useEffect } from 'react'
-import premiereImg from './images/premiere.jpeg';
 import Navbar from "./components/Navbar";
 import {
     BrowserRouter as Router,
     Routes,
     Route,
 } from "react-router-dom";
-import Home from "./pages";
-import About from "./pages/about";
+import Home from "./pages/index";
+import TopRated from "./pages/about";
 import Blogs from "./pages/blogs";
-import SignUp from "./pages/signup";
 import Contact from "./pages/contact";
 
 function App() {
-    const [movie, setMovie] = useState('')
-    const [movies, setMovies] = useState([])
     const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
@@ -27,83 +23,15 @@ function App() {
         <Router>
             <Navbar/>
             <Routes>
-                <Route exact path="/" element={<Home/>} />
-                <Route path="/about" element={<About/>} />
-                <Route
-                    path="/contact"
-                    element={<Contact/>}
-                />
+                <Route exact path="/index" element={<Home/>} />
+                <Route path="/about" element={<TopRated />} />
+                <Route path="/contact" element={<Contact/>} />
                 <Route path="/blogs" element={<Blogs/>} />
-                <Route
-                    path="/sign-up"
-                    element={<SignUp/>}
-                />
             </Routes>
         </Router>
-
-        <div style={{padding: '3em', fontFamily: 'Courier New'}}>
-
-            <button style={{boxShadow: "4px 4px 4px rgba(0,0,0,0.3)"}} onClick={() => setDarkMode(prev => !prev)}>
-                {darkMode ? 'Light Mode' : 'Dark Mode'}
-            </button>
-
-            <h1>Movie Watchlist</h1>
-
-            <br></br>
-            <br></br>
-
-            <img src={premiereImg} alt="the classic Premiere Theater" style={{boxShadow: "4px 4px 4px rgba(0,0,0,0.3)"}}/>
-
-                <br></br>
-            <br></br>
-
-            <input style={{boxShadow: "4px 4px 4px rgba(0,0,0,0.3)"}}
-                type="text"
-                placeholder="Enter Movie Name"
-                value={movie}
-                onChange={(e) => setMovie(e.target.value)}
-            />
-            <button style={{boxShadow: "4px 4px 4px rgba(0,0,0,0.3)"}}
-                onClick={() => {
-                    if (!movie.trim()) return
-                    setMovies(prev => [...prev, { name: movie, rating: 0 }])
-                    setMovie('')
-                }}>
-                Add
-            </button>
-
-            <ul>
-                {movies.map((m, i) => (
-                    <li key={i} style={{ margin: '2em 0' }}>
-                        {m.name} &nbsp;
-                        {[1, 2, 3, 4, 5].map(star => (
-                            <span
-                                key={star}
-                                style={{ cursor: 'pointer', color: star <= m.rating ? 'gold' : 'lightgray' }}
-                                onClick={() =>
-                                    setMovies(prev =>
-                                        prev.map((mv, idx) =>
-                                            idx === i ? { ...mv, rating: star } : mv
-                                        )
-                                    )
-                                }>★</span>
-                        ))}
-                        <button
-                            onClick={() =>
-                                window.open(
-                                    `https://www.youtube.com/results?search_query=${encodeURIComponent(
-                                        m.name + ' Trailer'
-                                    )}`,
-                                    '_blank'
-                                )
-                            }
-                        >
-                            Trailer Link
-                        </button>
-                    </li>
-                ))}
-            </ul>
-        </div>
+    <button style={{boxShadow: "4px 4px 4px rgba(0,0,0,0.3)", padding: '1em', fontFamily: 'Courier New'}} onClick={() => setDarkMode(prev => !prev)}>
+        {darkMode ? 'Light Mode' : 'Dark Mode'}
+    </button>
     </>
     )
 }
